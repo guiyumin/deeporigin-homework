@@ -1,0 +1,27 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 8000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "catalog:web",
+    "react-dom": "catalog:web",
+    "next": "catalog:web"
+  },
+  "devDependencies": {
+    "typescript": "catalog:web",
+    "@types/node": "catalog:web",
+    "@types/react": "catalog:web",
+    "@types/react-dom": "catalog:web",
+    "@tailwindcss/postcss": "catalog:web",
+    "tailwindcss": "catalog:web",
+    "eslint": "catalog:web",
+    "eslint-config-next": "catalog:web",
+    "@eslint/eslintrc": "catalog:web"
+  }
+}

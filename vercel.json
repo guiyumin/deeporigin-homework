@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "installCommand": "make i",
+  "buildCommand": "make build",
+  "builds": [
+    { "src": "apps/web/next.config.js", "use": "@vercel/next" },
+    { "src": "apps/server/**/*.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/server/(.*)", "dest": "/apps/server/$1.js" },
+    { "src": "/(.*)", "dest": "/apps/web/$1" }
+  ]
+}

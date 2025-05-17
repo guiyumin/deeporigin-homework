@@ -1,0 +1,14 @@
+{
+  "name": "deeporigin-homework",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.6.4",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=10.6.4"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
