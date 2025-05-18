@@ -18,7 +18,8 @@
     "@fastify/postgres": "catalog:server",
     "p-retry": "catalog:server",
     "pg": "catalog:server",
-    "dotenv": "catalog:server"
+    "dotenv": "catalog:server",
+    "@faker-js/faker": "catalog:server"
   },
   "devDependencies": {
     "nodemon": "catalog:server",

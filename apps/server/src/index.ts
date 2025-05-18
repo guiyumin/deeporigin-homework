@@ -1,6 +1,7 @@
 import "dotenv/config";
 import Fastify from "fastify";
 import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
+import { TASKS } from "./libs/data-gen";
 
 const fastify = Fastify({
   logger: true,
@@ -8,6 +9,16 @@ const fastify = Fastify({
 
 fastify.get("/", (req, res) => {
   res.send("Hello World!");
+});
+
+fastify.get("/data", (req, res) => {
+  res.status(200).send({
+    code: 200,
+    data: {
+      tasks: TASKS,
+    },
+    message: "data fetched successfully",
+  });
 });
 
 const start = async () => {
