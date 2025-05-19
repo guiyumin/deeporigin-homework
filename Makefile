@@ -1,4 +1,4 @@
-.PHONY: i
+.PHONY: i dev dev-web dev-server build build-web build-server d-up d-stop d-down d-clean
 
 i:
 	pnpm install
@@ -21,4 +21,18 @@ build-web:
 build-server:
 	pnpm --filter server build
  
+d-up:
+	docker compose up -d
+
+d-stop:
+	docker compose stop
+
+d-down:
+	docker compose down
+
+# Warning: Deletes all Docker resources
+d-clean:
+	docker compose down -v --rmi all --remove-orphans
+ 
+
  
