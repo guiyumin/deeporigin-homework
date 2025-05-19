@@ -52,7 +52,9 @@ export const AssigneeRenderer = (
           mode="multiple"
           maxTagCount={1}
           placeholder="Select assignees"
-          defaultValue={currentAssignees.map((assignee: any) => assignee.id)}
+          defaultValue={currentAssignees.map(
+            (assignee: Task["assignees"][number]) => assignee.id
+          )}
           allowClear={isEditing}
           disabled={!isEditing}
           onChange={(value) => {
@@ -62,7 +64,7 @@ export const AssigneeRenderer = (
             setCurrentAssignees(newAssignees);
           }}
         >
-          {allAssignees.map((assignee: any) => (
+          {allAssignees.map((assignee: Task["assignees"][number]) => (
             <Select.Option key={assignee.id} value={assignee.id}>
               <Tag
                 key={assignee.id}
