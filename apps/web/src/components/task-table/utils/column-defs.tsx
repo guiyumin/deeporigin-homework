@@ -1,6 +1,7 @@
 import { Space, Tag } from "@arco-design/web-react";
 import { ColDef, ColGroupDef, ICellRendererParams } from "ag-grid-community";
 import Link from "next/link";
+import { AssigneeRenderer } from "./assignee-renderer";
 
 export const columnDefs: (ColDef | ColGroupDef)[] = [
   {
@@ -38,26 +39,8 @@ export const columnDefs: (ColDef | ColGroupDef)[] = [
   {
     field: "assignees",
     headerName: "Assignees",
-
-    cellRenderer: (params: ICellRendererParams) => {
-      return (
-        <Space>
-          {params.value.map((assignee: any) => (
-            <Tag
-              key={assignee.id}
-              icon={
-                <img
-                  key={assignee.id}
-                  className="w-4 h-4 rounded-full"
-                  src={assignee.avatar}
-                />
-              }
-            >
-              {assignee.name}
-            </Tag>
-          ))}
-        </Space>
-      );
-    },
+    flex: 1,
+    cellRenderer: AssigneeRenderer,
+    sortable: false,
   },
 ];

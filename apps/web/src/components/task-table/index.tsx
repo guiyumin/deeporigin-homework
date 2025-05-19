@@ -2,7 +2,7 @@ import * as React from "react";
 import { AgGridReact } from "ag-grid-react";
 
 import { Task } from "src/types/task";
-import { columnDefs } from "./utils/columnDefs";
+import { columnDefs } from "./utils/column-defs";
 
 interface DataTableProps {
   tasks: Task[];
