@@ -1,9 +1,14 @@
 import { Space, Tag } from "@arco-design/web-react";
+import { Task } from "src/types/task";
 
-export const AssigneeTooltipContent = ({ assignees }: { assignees: any[] }) => {
+export const AssigneeTooltipContent = ({
+  assignees,
+}: {
+  assignees: Task["assignees"];
+}) => {
   return (
     <Space direction="vertical">
-      {assignees.slice(1).map((assignee) => (
+      {assignees.map((assignee) => (
         <Tag
           key={assignee.id}
           icon={

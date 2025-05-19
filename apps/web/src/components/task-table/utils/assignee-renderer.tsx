@@ -4,11 +4,20 @@ import type { ICellRendererParams } from "ag-grid-community";
 import * as React from "react";
 import { IconCheck, IconEdit } from "@arco-design/web-react/icon";
 import { AssigneeTooltipContent } from "./assignee-tooltip-content";
+import { Task } from "src/types/task";
 
-export const AssigneeRenderer = (params: ICellRendererParams) => {
-  console.log("params", params);
-  console.log("params.api.getAllGridColumns()", params.api.getAllGridColumns());
+export const AssigneeRenderer = (
+  params: ICellRendererParams<Task, Task["assignees"]>
+) => {
   const [isEditing, setIsEditing] = React.useState(false);
+
+  const currentAssignees = params.value ?? [];
+  const allAssignees: Task["assignees"] = [];
+
+  params.api.forEachNode((node) => {
+    allAssignees.push(...node.data!.assignees);
+  });
+
   return (
     <Space>
       {isEditing ? (
@@ -28,19 +37,19 @@ export const AssigneeRenderer = (params: ICellRendererParams) => {
       <Tooltip
         position="top"
         trigger="hover"
-        disabled={params.value.length <= 1}
-        content={<AssigneeTooltipContent assignees={params.value as any[]} />}
+        disabled={currentAssignees.length <= 1}
+        content={<AssigneeTooltipContent assignees={currentAssignees} />}
       >
         <Select
           className="min-w-100"
           mode="multiple"
           maxTagCount={1}
           placeholder="Select assignees"
-          defaultValue={params.value.map((assignee: any) => assignee.id)}
+          defaultValue={currentAssignees.map((assignee: any) => assignee.id)}
           allowClear={isEditing}
           disabled={!isEditing}
         >
-          {params.value.map((assignee: any) => (
+          {allAssignees.map((assignee: any) => (
             <Select.Option key={assignee.id} value={assignee.id}>
               <Tag
                 key={assignee.id}

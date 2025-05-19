@@ -1,8 +1,9 @@
-import { ColDef, ColGroupDef, ICellRendererParams } from "ag-grid-community";
+import { ColDef, ICellRendererParams } from "ag-grid-community";
 import Link from "next/link";
 import { AssigneeRenderer } from "./assignee-renderer";
+import { Task } from "src/types/task";
 
-export const columnDefs: (ColDef | ColGroupDef)[] = [
+export const columnDefs: ColDef<Task>[] = [
   {
     field: "id",
     headerName: "ID",
