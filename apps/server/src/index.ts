@@ -23,7 +23,7 @@ fastify.get("/data", (req, res) => {
 
 const start = async () => {
   try {
-    const address = await fastify.listen({ port: 9000 });
+    const address = await fastify.listen({ port: 9000, host: "0.0.0.0" });
     fastify.log.info(`Server is running on ${address}`);
   } catch (err) {
     fastify.log.error(err);
