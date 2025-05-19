@@ -1,5 +1,5 @@
 import { Space, Tag } from "@arco-design/web-react";
-import { Task } from "src/types/task";
+import { Task } from "src/types";
 
 export const AssigneeTooltipContent = ({
   assignees,

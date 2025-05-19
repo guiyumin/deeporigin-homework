@@ -25,7 +25,9 @@ export const fetchUserTasks = async ({ baseUrl }: { baseUrl: string }) => {
     }
 
     return {
-      data: result.data.tasks,
+      data: {
+        ...result.data,
+      },
       error: null,
     };
   } catch (error) {

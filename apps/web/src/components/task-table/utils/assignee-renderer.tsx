@@ -4,18 +4,25 @@ import type { ICellRendererParams } from "ag-grid-community";
 import * as React from "react";
 import { IconCheck, IconEdit } from "@arco-design/web-react/icon";
 import { AssigneeTooltipContent } from "./assignee-tooltip-content";
-import { Task } from "src/types/task";
+import { Task } from "src/types";
+import { useState } from "react";
 
 export const AssigneeRenderer = (
   params: ICellRendererParams<Task, Task["assignees"]>
 ) => {
   const [isEditing, setIsEditing] = React.useState(false);
 
-  const currentAssignees = params.value ?? [];
+  const [currentAssignees, setCurrentAssignees] = useState(params.value ?? []);
   const allAssignees: Task["assignees"] = [];
+  const assigneesSet = new Set<string>();
 
   params.api.forEachNode((node) => {
-    allAssignees.push(...node.data!.assignees);
+    node.data!.assignees.forEach((assignee) => {
+      if (!assigneesSet.has(assignee.id)) {
+        allAssignees.push(assignee);
+        assigneesSet.add(assignee.id);
+      }
+    });
   });
 
   return (
@@ -48,6 +55,12 @@ export const AssigneeRenderer = (
           defaultValue={currentAssignees.map((assignee: any) => assignee.id)}
           allowClear={isEditing}
           disabled={!isEditing}
+          onChange={(value) => {
+            const newAssignees = allAssignees.filter((assignee) => {
+              return value.includes(assignee.id);
+            });
+            setCurrentAssignees(newAssignees);
+          }}
         >
           {allAssignees.map((assignee: any) => (
             <Select.Option key={assignee.id} value={assignee.id}>

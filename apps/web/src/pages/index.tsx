@@ -1,15 +1,15 @@
 import { fetchUserTasks } from "src/queries";
-import { Task } from "src/types/task";
+import { Task } from "src/types";
 import { TaskTable } from "src/components/task-table";
 
 export default function Home({
   tasks,
   error,
 }: {
-  tasks: Task[];
-  error: string;
+  tasks?: Task[];
+  error?: string;
 }) {
-  if (error) {
+  if (error || !tasks) {
     return <div className="text-red-500">{error}</div>;
   }
 
@@ -29,7 +29,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      tasks: data,
+      tasks: data?.tasks,
       error,
     },
   };

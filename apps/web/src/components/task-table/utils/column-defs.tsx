@@ -1,7 +1,7 @@
 import { ColDef, ICellRendererParams } from "ag-grid-community";
 import Link from "next/link";
 import { AssigneeRenderer } from "./assignee-renderer";
-import { Task } from "src/types/task";
+import { Task } from "src/types";
 
 export const columnDefs: ColDef<Task>[] = [
   {
