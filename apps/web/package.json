@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "ag-grid-react": "catalog:web",
+    "ag-grid-community": "catalog:web",
+    "@arco-design/web-react": "catalog:web",
     "clsx": "catalog:web",
     "date-fns": "catalog:web",
     "next": "catalog:web",

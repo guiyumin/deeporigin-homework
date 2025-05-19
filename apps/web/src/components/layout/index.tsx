@@ -1,5 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import clsx from "clsx";
+import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
+
+ModuleRegistry.registerModules([AllCommunityModule]);
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

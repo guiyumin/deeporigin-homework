@@ -1,11 +1,21 @@
 import * as React from "react";
+import { AgGridReact } from "ag-grid-react";
 
-import { Task } from "src/schemas/task";
+import { Task } from "src/types/task";
+import { columnDefs } from "./utils/columnDefs";
 
 interface DataTableProps {
   tasks: Task[];
 }
 
 export function TaskTable({ tasks }: DataTableProps) {
-  const [rowSelection, setRowSelection] = React.useState({});
+  return (
+    <div className="h-100 w-full">
+      <AgGridReact
+        rowData={tasks}
+        columnDefs={columnDefs}
+        tooltipShowDelay={0}
+      />
+    </div>
+  );
 }

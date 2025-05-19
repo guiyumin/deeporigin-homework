@@ -1,18 +1,6 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
 import { fetchUserTasks } from "src/queries";
-import { Task } from "src/schemas/task";
+import { Task } from "src/types/task";
 import { TaskTable } from "src/components/task-table";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export default function Home({
   tasks,

@@ -13,5 +13,3 @@ export const TaskSchema = z.object({
   ),
   lastModified: z.number(),
 });
-
-export type Task = z.infer<typeof TaskSchema>;
