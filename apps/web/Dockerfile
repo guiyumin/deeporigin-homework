@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/web ./apps/web
 RUN npm install -g pnpm@10.6.4 && pnpm install --frozen-lockfile
-RUN cd apps/web && pnpm prisma generate && pnpm --filter web build
+RUN pnpm --filter web build
 
 # Production stage
 FROM node:22-alpine

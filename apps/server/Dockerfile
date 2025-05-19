@@ -4,6 +4,7 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/server ./apps/server
 RUN npm install -g pnpm@10.6.4 && pnpm install --frozen-lockfile
+RUN pnpm --filter server build
 
 # Production stage
 FROM node:22-alpine
