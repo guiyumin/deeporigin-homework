@@ -24,7 +24,7 @@ export const columnDefs: (ColDef | ColGroupDef)[] = [
   },
   {
     field: "volume",
-    headerName: "Volume(ul)",
+    headerName: "Volume(μl)",
   },
   {
     field: "lastModified",
