@@ -1,0 +1,12 @@
+{$DOMAIN} {
+
+    reverse_proxy /server/* server:9000
+	
+    reverse_proxy /* web:8000
+
+    # Logging
+    log {
+        output stdout
+    }
+
+}

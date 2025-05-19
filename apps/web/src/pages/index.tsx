@@ -24,7 +24,9 @@ export default function Home({
 export const getServerSideProps = async () => {
   const { data, error } = await fetchUserTasks({
     baseUrl:
-      process.env.NODE_ENV === "production" ? "" : "http://localhost:9000",
+      process.env.NODE_ENV === "production"
+        ? "/server"
+        : "http://localhost:9000",
   });
 
   return {
